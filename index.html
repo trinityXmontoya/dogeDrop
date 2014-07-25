@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>dogeDrop</title>
+   <link rel="stylesheet" href="public/styles/style.css">
+  <script src="public/js/main.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="public/js/vendor/jquery.ui.widget.min.js"></script>
+  <script src="public/js/vendor/jquery.iframe-transport.min.js"></script>
+  <script src="public/js/vendor/jquery.fileupload.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+<script>
+$(function () {
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo(document.body);
+            });
+        }
+    });
+});
+</script>
+</head>
+<body>
+
+  <img src="http://barkpost-assets.s3.amazonaws.com/wp-content/uploads/2013/11/3dDoge.gif" alt="">
+  <input id="fileupload" type="file" name="files[]" data-url="server/php/" multiple>
+</body>
+</html>
